@@ -88,10 +88,10 @@ class BaseModel(ABC, Configurable):
         
         if not self.isTrain or opt.continue_train:
             if opt.load_epoch == 'latest':
-                current_epoch = max([int(os.path.basename(x).split('_')[0]) for x in glob.glob(os.path.join(self.opt.checkpoints_dir,opt.pretrained_dir, '*.pth')) if 'latest' not in x])
+                current_epoch = max([int(os.path.basename(x).split('_')[0]) for x in glob.glob(os.path.join(self.save_dir, '*.pth')) if 'latest' not in x])
             else:
                 current_epoch = int(opt.load_epoch)
-            self.load_networks(opt.pretrained_dir, opt.load_epoch)
+            self.load_networks(opt.name, opt.load_epoch)
 
         if self.isTrain and opt.fix_layers:
             for name in self.model_names:
