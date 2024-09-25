@@ -21,7 +21,7 @@ from utils.visualizer import Visualizee
 class LLFFRefineDataset(BaseDataset):
     @staticmethod
     def modify_commandline_options(parser):
-        parser.add_argument('--patch_len', type=int, default=64)
+        parser.add_argument('--patch_len', type=int, default=256)
         parser.add_argument('--ref_idx', type=int, default=0)
         parser.add_argument('--syn_dataroot', type=str, required=True)
         parser.add_argument('--aug_num', type=int, default=200)

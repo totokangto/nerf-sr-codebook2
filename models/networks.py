@@ -511,7 +511,6 @@ class UnetGenerator(nn.Module, Configurable):
         cb_hr_patch, loss_hr, cb_x1,cb_x2,cb_x3 = self.codebook(self.opt,ref)
         _, loss_sr, _,_,_ = self.codebook(self.opt,sr)
 
-        print(f'-----------------------x1 : {z.shape}, cb_x1 : {cb_x1.shape}')
         x1 = self.up_1(z) # 128,16,16
         x1 = torch.cat([x1, cb_x1], dim=1) # 256,16,16
         x2 = self.up_2(x1)
@@ -558,7 +557,6 @@ class VQCodebook(nn.Module, Configurable):
     def forward(self, opt, patch, idx=None):
         z = self.encoder(patch) # 32, 128, 16, 16
         z = self.pre_quantization_conv(z) # 32, 64, 16, 16
-        print(f'============z shape : {z.shape}')
         z = z.permute(0, 2, 3, 1).contiguous() # 32, 16, 16, 64
         
         if idx is not None:
