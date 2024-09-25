@@ -17,3 +17,4 @@ python test_refine.py --name llff-refine-${dataset}-${H}x${W}-ni-dp-ds${downscal
     --syn_dataroot ./checkpoints/nerf-sr/llff-${dataset}-${H}x${W}-ni64-dp-ds${downscale}/30_test_vis 
     # train과 동일하게 unetgenerator로 바꿈
     # --refine_network maxpoolingmodel \
+
